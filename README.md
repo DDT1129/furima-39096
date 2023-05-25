@@ -23,11 +23,11 @@
 | ----------------- | -------------- | ------------------------------- |
 |name               |string          |null: false                      |
 |explanation        |text            |null: false                      |
-|price              |string          |null: false                      |
+|price              |integer         |null: false                      |
 |category_id        |integer         |null: false                      |
 |detail_id          |integer         |null: false                      |
 |shipping_price_id  |integer         |null: false                      |
-|ship_from_id       |integer         |null: false                      |
+|prefecture_id      |integer         |null: false                      |
 |shipping_date_id   |integer         |null: false                      |
 |user               |references      |null: false , foreign_key: true  |
 
