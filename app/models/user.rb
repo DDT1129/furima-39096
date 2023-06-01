@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :nickname,
             presence: true
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates_format_of :password,allow_blank: true, with: PASSWORD_REGEX, message: '英数字の両方を含めて半角で入力してください'
+  validates_format_of :password, allow_blank: true, with: PASSWORD_REGEX, message: '英数字の両方を含めて半角で入力してください'
   with_options presence: true do
     validates :first_name
     validates :last_name
@@ -26,7 +26,6 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
-  
 
   validates :birthday, presence: true
 
