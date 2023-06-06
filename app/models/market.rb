@@ -4,9 +4,9 @@ class Market < ApplicationRecord
   validates :image,
             presence: true
   validates :name,
-            presence: true, length: { maxium: 40 }
+            presence: true, length: { maximum: 40 }
   validates :explanation,
-            presence: true, length: { maxium: 1000 }
+            presence: true, length: { maximum: 1000 }
   validates :explanation,
             presence: true
   validates :category_id,
@@ -20,7 +20,7 @@ class Market < ApplicationRecord
   validates :shipping_date_id,
             presence: true
   with_options presence: true, format: { with: /\A\d+\z/ } do
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end                     
             
   
