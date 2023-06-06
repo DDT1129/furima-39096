@@ -7,8 +7,7 @@ class Market < ApplicationRecord
             presence: true, length: { maximum: 40 }
   validates :explanation,
             presence: true, length: { maximum: 1000 }
-  validates :explanation,
-            presence: true
+  
   validates :category_id,
             presence: true
   validates :detail_id,
