@@ -8,19 +8,16 @@ class Market < ApplicationRecord
   validates :explanation,
             presence: true, length: { maximum: 1000 }
   
-  validates :category_id,
-            presence: true
-  validates :detail_id,
-            presence: true
-  validates :shipping_price_id,
-            presence: true
-  validates :prefecture_id,
-            presence: true
-  validates :shipping_date_id,
-            presence: true
-  with_options presence: true, format: { with: /\A\d+\z/ } do
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  end                     
+  with_options presence: true, numericality: { other_than: 1 , message: "can't be blank"} do
+    validates :category_id  
+    validates :detail_id   
+    validates :shipping_price_id
+    validates :prefecture_id
+    validates :shipping_date_id        
+  end
+  
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+                       
             
   
 
