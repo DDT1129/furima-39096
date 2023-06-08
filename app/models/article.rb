@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_date
   belongs_to :shipping_price
-  
+
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :detail_id

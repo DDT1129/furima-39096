@@ -7,7 +7,7 @@ class MarketsController < ApplicationController
   def new
     @market = Market.new
   end
-  
+
   def create
     @market = Market.create(market_params)
     if @market.save
@@ -15,12 +15,12 @@ class MarketsController < ApplicationController
     else
       render :new
     end
-  
   end
-  
+
   private
 
   def market_params
-    params.require(:market).permit(:name, :explanation, :price, :category_id, :detail_id, :shipping_price_id, :shipping_date_id, :prefecture_id, :user_id, :image).merge(user_id: current_user.id)
+    params.require(:market).permit(:name, :explanation, :price, :category_id, :detail_id, :shipping_price_id, :shipping_date_id,
+                                   :prefecture_id, :user_id, :image).merge(user_id: current_user.id)
   end
 end

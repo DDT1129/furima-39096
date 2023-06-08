@@ -5,7 +5,6 @@ RSpec.describe Market, type: :model do
     @market = FactoryBot.build(:market)
   end
 
-
   describe '商品情報の登録' do
     context '登録できるとき' do
       it '全項目が入力されていれば登録できる' do
@@ -23,11 +22,9 @@ RSpec.describe Market, type: :model do
         expect(@market).to be_valid
       end
       it 'priceが300以上9,999,999以内であれば登録できる' do
-        @market.price = Faker::Number.between(from: 300, to: 9999999)   
+        @market.price = Faker::Number.between(from: 300, to: 9_999_999)
         expect(@market).to be_valid
       end
-      
-
     end
 
     context '登録できないとき' do
@@ -44,7 +41,7 @@ RSpec.describe Market, type: :model do
       it 'nameは40文字以内でないと登録できない' do
         @market.name = Faker::Lorem.characters(number: 41)
         @market.valid?
-        expect(@market.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@market.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'explanationが空では登録できない' do
         @market.explanation = ''
@@ -54,7 +51,7 @@ RSpec.describe Market, type: :model do
       it 'explanationは1000文字以内でないと登録できない' do
         @market.explanation = Faker::Lorem.characters(number: 1001)
         @market.valid?
-        expect(@market.errors.full_messages).to include("Explanation is too long (maximum is 1000 characters)")
+        expect(@market.errors.full_messages).to include('Explanation is too long (maximum is 1000 characters)')
       end
       it 'category_idが空では登録できない' do
         @market.category_id = ''
@@ -84,22 +81,22 @@ RSpec.describe Market, type: :model do
       it 'priceが空では登録できない' do
         @market.price = ''
         @market.valid?
-        expect(@market.errors.full_messages).to include("Price は、¥300〜9,999,999の間で半角で入力して下さい")
+        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
       end
       it 'priceが300〜9,999,999の間であっても、全角では登録できない' do
         @market.price = '１０００'
         @market.valid?
-        expect(@market.errors.full_messages).to include("Price は、¥300〜9,999,999の間で半角で入力して下さい")
+        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
       end
       it 'priceが300未満では登録できない' do
         @market.price = '100'
         @market.valid?
-        expect(@market.errors.full_messages).to include("Price は、¥300〜9,999,999の間で半角で入力して下さい")
+        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
       end
       it 'priceが10,000,000以上では登録できない' do
         @market.price = '10,000,000'
         @market.valid?
-        expect(@market.errors.full_messages).to include("Price は、¥300〜9,999,999の間で半角で入力して下さい")
+        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
       end
     end
   end
