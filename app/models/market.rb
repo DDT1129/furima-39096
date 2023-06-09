@@ -18,8 +18,8 @@ class Market < ApplicationRecord
 
   validates :price,
             numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
-                            message: 'は、¥300〜9,999,999の間で半角で入力して下さい' }
+                            message: "can't be blank" }
 
   belongs_to :user
-  has_one :order_recode
+  # has_one :order_recode
 end

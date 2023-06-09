@@ -81,22 +81,22 @@ RSpec.describe Market, type: :model do
       it 'priceが空では登録できない' do
         @market.price = ''
         @market.valid?
-        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
+        expect(@market.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが300〜9,999,999の間であっても、全角では登録できない' do
         @market.price = '１０００'
         @market.valid?
-        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
+        expect(@market.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが300未満では登録できない' do
         @market.price = '100'
         @market.valid?
-        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
+        expect(@market.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが10,000,000以上では登録できない' do
         @market.price = '10,000,000'
         @market.valid?
-        expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
+        expect(@market.errors.full_messages).to include("Price can't be blank")
       end
       it 'userが紐付いていなければ登録できない' do
         @market.user = nil
