@@ -9,7 +9,7 @@ class MarketsController < ApplicationController
   end
 
   def create
-    @market = Market.create(market_params)
+    @market = Market.new(market_params)
     if @market.save
       redirect_to root_path
     else
