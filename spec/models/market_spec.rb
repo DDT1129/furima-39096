@@ -98,6 +98,11 @@ RSpec.describe Market, type: :model do
         @market.valid?
         expect(@market.errors.full_messages).to include('Price は、¥300〜9,999,999の間で半角で入力して下さい')
       end
+      it 'userが紐付いていなければ登録できない' do
+        @market.user = nil
+        @market.valid?
+        expect(@market.errors.full_messages).to include('User must exist')
+      end
     end
   end
 end
