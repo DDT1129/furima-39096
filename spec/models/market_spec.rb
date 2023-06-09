@@ -54,27 +54,27 @@ RSpec.describe Market, type: :model do
         expect(@market.errors.full_messages).to include('Explanation is too long (maximum is 1000 characters)')
       end
       it 'category_idが空では登録できない' do
-        @market.category_id = ''
+        @market.category_id = 1
         @market.valid?
         expect(@market.errors.full_messages).to include("Category can't be blank")
       end
       it 'detail_idが空では登録できない' do
-        @market.detail_id = ''
+        @market.detail_id = 1
         @market.valid?
         expect(@market.errors.full_messages).to include("Detail can't be blank")
       end
       it 'shipping_price_idが空では登録できない' do
-        @market.shipping_price_id = ''
+        @market.shipping_price_id = 1
         @market.valid?
         expect(@market.errors.full_messages).to include("Shipping price can't be blank")
       end
       it 'prefecture_idが空では登録できない' do
-        @market.prefecture_id = ''
+        @market.prefecture_id = 1
         @market.valid?
         expect(@market.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'shipping_date_idが空では登録できない' do
-        @market.shipping_date_id = ''
+        @market.shipping_date_id = 1
         @market.valid?
         expect(@market.errors.full_messages).to include("Shipping date can't be blank")
       end
