@@ -17,7 +17,7 @@
 - has_many :order_recodes
 
 
-## itemsテーブル
+## marketsテーブル
 
 |Column             |Type            |Options                          |
 | ----------------- | -------------- | ------------------------------- |
