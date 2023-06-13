@@ -127,12 +127,10 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
-      
       <% if @markets.present? %>
       <% @markets.each do |market| %>
       <li class='list'>
-        <%= link_to markets_path(market.id) do %>
+        <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag market.image, class: "item-img"  %>
 
@@ -159,9 +157,6 @@
       </li>
       <% end %>
       
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -180,11 +175,10 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
     <% end %>
   </div>
+
   <%# /商品一覧 %>
 </div>
 <%= link_to(new_market_path, class: 'purchase-btn') do %>
