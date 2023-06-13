@@ -21,5 +21,8 @@ class Market < ApplicationRecord
                             message: "can't be blank" }
 
   belongs_to :user
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :shipping_price
   # has_one :order_recode
 end
