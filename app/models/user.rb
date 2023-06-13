@@ -29,6 +29,6 @@ class User < ApplicationRecord
 
   validates :birthday, presence: true
 
+  has_many :markets
   # has_many :order_recodes
-  # has_many :items
 end

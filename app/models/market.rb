@@ -24,5 +24,9 @@ class Market < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :shipping_price
+  belongs_to :category
+  belongs_to :detail
+  belongs_to :prefecture
+  belongs_to :shipping_date
   # has_one :order_recode
 end
