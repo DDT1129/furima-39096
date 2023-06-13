@@ -18,6 +18,10 @@ class MarketsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
   private
 
   def market_params
