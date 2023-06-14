@@ -1,5 +1,6 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_market, only: [:show, :edit, :update]
 
   def index
     @markets = Market.all.order('created_at DESC')
@@ -43,5 +44,9 @@ class MarketsController < ApplicationController
   def market_params
     params.require(:market).permit(:name, :explanation, :price, :category_id, :detail_id, :shipping_price_id, :shipping_date_id,
                                    :prefecture_id, :user_id, :image).merge(user_id: current_user.id)
+  end
+
+  def set_market
+    @market = Market.find(params[:id])
   end
 end
