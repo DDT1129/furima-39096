@@ -22,6 +22,10 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
   end
 
+  def edit
+    
+  end
+
   private
 
   def market_params
