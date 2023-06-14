@@ -24,6 +24,9 @@ class MarketsController < ApplicationController
 
   def edit
     @market = Market.find(params[:id])
+    unless current_user.id == @market.user_id
+      redirect_to action: :index
+    end
   end
 
   private
