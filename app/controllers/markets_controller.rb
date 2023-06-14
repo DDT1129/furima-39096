@@ -20,18 +20,15 @@ class MarketsController < ApplicationController
   end
 
   def show
-    @market = Market.find(params[:id])
   end
 
   def edit
-    @market = Market.find(params[:id])
     return if current_user.id == @market.user_id
 
     redirect_to action: :index
   end
 
   def update
-    @market = Market.find(params[:id])
     if @market.update(market_params)
       redirect_to market_path
     else
