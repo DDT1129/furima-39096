@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @markets = Market.all.order('created_at DESC')
