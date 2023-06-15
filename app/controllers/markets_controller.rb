@@ -1,6 +1,6 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_market, only: [:show, :edit, :update]
+  before_action :set_market, only: [:show, :edit, :update, :destroy]
 
   def index
     @markets = Market.all.order('created_at DESC')
@@ -34,6 +34,13 @@ class MarketsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    return unless user_signed_in? && current_user.id == @market.user_id
+
+    @market.destroy
+    redirect_to root_path
   end
 
   private
