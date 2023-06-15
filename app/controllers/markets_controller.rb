@@ -37,10 +37,12 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    return unless user_signed_in? && current_user.id == @market.user_id
-
-    @market.destroy
-    redirect_to root_path
+    if user_signed_in? && current_user.id == @market.user_id
+      @market.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
