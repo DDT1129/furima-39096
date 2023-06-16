@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   root to: "markets#index"
   resources :markets do
-    resources :orders, only: :index
+    resources :orders, only: [:index, :create]
   end
 end
