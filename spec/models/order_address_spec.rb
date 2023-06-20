@@ -58,12 +58,12 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号が空では登録できない' do
         @order_address.post_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code can't be blank", "Post code is invalid")
+        expect(@order_address.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
       end
       it '郵便番号にハイフンを入れないと登録できない' do
         @order_address.post_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid')
       end
       it '都道府県が空では登録できない' do
         @order_address.prefecture_id = ''
@@ -88,24 +88,23 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号が空では登録できない' do
         @order_address.phone = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone can't be blank", "Phone is invalid")
+        expect(@order_address.errors.full_messages).to include("Phone can't be blank", 'Phone is invalid')
       end
       it '電話番号にハイフンがあるときは登録できない' do
         @order_address.phone = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it '電話番号が１０桁未満のときは登録できない' do
         @order_address.phone = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it '電話番号が１２桁以上のときは登録できない' do
         @order_address.phone = '090123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
-    
     end
   end
 end
