@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :set_market, only: [:index, :create]
+
   def index
-    @market = Market.find(params[:market_id])
     @order_address = OrderAddress.new
   end
 
   def create
-    @market = Market.find(params[:market_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       @order_address.save
@@ -21,5 +21,9 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:post_code, :prefecture_id, :municipalities, :house_umber, :building, :phone).merge(
       user_id: current_user.id, market_id: params[:market_id]
     )
+  end
+
+  def set_market
+    @market = Market.find(params[:market_id])
   end
 end
