@@ -24,6 +24,7 @@ class MarketsController < ApplicationController
 
   def edit
     return if current_user.id == @market.user_id && @market.order.nil?
+
     redirect_to root_path
   end
 
