@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :municipalities, :house_umber, :building, :phone, :user_id, :market_id
+  attr_accessor :token, :post_code, :prefecture_id, :municipalities, :house_umber, :building, :phone, :user_id, :market_id
 
   with_options presence: true do
     validates :post_code, format: { with: /\A\d{3}-\d{4}+\z/, message: 'is invalid' }
@@ -12,6 +12,8 @@ class OrderAddress
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+
+  validates :token, presence: true
 
   def save
     order = Order.create(user_id: user_id, market_id: market_id)

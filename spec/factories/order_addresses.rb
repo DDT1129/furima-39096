@@ -9,5 +9,7 @@ FactoryBot.define do
 
     user_id            { Faker::Number.non_zero_digit }
     market_id          { Faker::Number.non_zero_digit }
+
+    token              {"tok_abcdefghijk00000000000000000"}
   end
 end

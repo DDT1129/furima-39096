@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def create
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
+      pay_market
       @order_address.save
       redirect_to root_path
     else
@@ -19,11 +20,21 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_address).permit(:post_code, :prefecture_id, :municipalities, :house_umber, :building, :phone).merge(
-      user_id: current_user.id, market_id: params[:market_id]
+      user_id: current_user.id, market_id: params[:market_id], token: params[:token]
     )
   end
 
   def set_market
     @market = Market.find(params[:market_id])
   end
+
+  def pay_market
+    Payjp.api_key = "sk_test_15917e0a394203b563ead45d"
+    Payjp::Charge.create(
+      amount: @market.price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
+  end
+
 end
