@@ -3,11 +3,8 @@ class OrdersController < ApplicationController
   before_action :set_market, only: [:index, :create]
 
   def index
-    if current_user.id == @market.user_id || @market.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @market.user_id || @market.order.present?
     @order_address = OrderAddress.new
-    
   end
 
   def create
@@ -34,12 +31,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_market
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @market.price,
       card: order_params[:token],
       currency: 'jpy'
     )
   end
-
 end
