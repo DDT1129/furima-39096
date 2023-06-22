@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_market, only: [:index, :create]
 
   def index
+    if current_user.id == @market.user_id || @market.order.present?
+      redirect_to root_path
+    end
     @order_address = OrderAddress.new
+    
   end
 
   def create
