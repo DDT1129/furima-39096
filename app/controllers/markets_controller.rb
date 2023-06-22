@@ -23,9 +23,8 @@ class MarketsController < ApplicationController
   end
 
   def edit
-    return if current_user.id == @market.user_id
-
-    redirect_to action: :index
+    return if current_user.id == @market.user_id && @market.order.nil?
+    redirect_to root_path
   end
 
   def update
