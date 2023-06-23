@@ -13,8 +13,8 @@
 
 ### Association
 
-- has_many :items
-- has_many :order_recodes
+- has_many :markets
+- has_many :orders
 
 
 ## marketsテーブル
@@ -34,7 +34,7 @@
 ### Association
 
   belongs_to :user
-- has_one :order_recode
+- has_one :order
 
 ## addressesテーブル
 
@@ -46,23 +46,23 @@
 |house_number    |string      |null: false                     |
 |building        |string      |                                |
 |phone           |string      |null: false                     |
-|order_recode    |references  |null: false ,foreign_key: true  |
+|order           |references  |null: false ,foreign_key: true  |
 
 ### Association
 
 
-- belongs_to :order_recode
+- belongs_to :order
 
-## order_recodesテーブル
+## ordersテーブル
 
 |Column         |Type        |Options                         |
 | ------------- | ---------- | ------------------------------ |
 |user           |references  |null: false  ,foreign_key: true |
-|item           |references  |null: false  ,foreign_key: true |
+|market         |references  |null: false  ,foreign_key: true |
 
 
 ### Association
 
   belongs_to :user
-  belongs_to :item
+  belongs_to :market
 - has_one :address
