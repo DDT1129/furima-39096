@@ -6,10 +6,6 @@ FactoryBot.define do
     house_umber        { Faker::Address.street_address }
     building           { Faker::Address.street_address }
     phone              { Faker::Number.between(from: 1_000_000_000, to: 99_999_999_999) }
-
-    user_id            { Faker::Number.non_zero_digit }
-    market_id          { Faker::Number.non_zero_digit }
-
     token              { 'tok_abcdefghijk00000000000000000' }
   end
 end

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = FactoryBot.build(:order_address)
+    user = FactoryBot.create(:user)
+    market = FactoryBot.create(:market)
+    @order_address = FactoryBot.build(:order_address, user_id: user.id, market_id: market.id)
   end
 
   describe '配送先住所情報の登録' do
