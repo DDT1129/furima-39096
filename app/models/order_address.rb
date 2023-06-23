@@ -9,11 +9,9 @@ class OrderAddress
     validates :phone, format: { with: /\A\d{10,11}+\z/, message: 'is invalid' }
     validates :user_id
     validates :market_id
-  end
-
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
-
-  validates :token, presence: true
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :token
+  end 
 
   def save
     order = Order.create(user_id: user_id, market_id: market_id)
