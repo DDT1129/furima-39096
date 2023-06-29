@@ -73,7 +73,7 @@ RSpec.describe OrderAddress, type: :model do
       it '都道府県が空では登録できない' do
         @order_address.prefecture_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@order_address.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it '市区町村が空では登録できない' do
         @order_address.municipalities = ''

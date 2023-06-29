@@ -11,7 +11,7 @@ class OrderAddress
     validates :market_id
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :token
-  end 
+  end
 
   def save
     order = Order.create(user_id: user_id, market_id: market_id)
