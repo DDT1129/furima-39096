@@ -31,3 +31,6 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+# EC2に「masterブランチじゃなくてmainブランチを使っている」旨を認識させる
+set :branch, 'main'
